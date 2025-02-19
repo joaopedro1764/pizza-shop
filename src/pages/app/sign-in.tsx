@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -24,6 +25,9 @@ export function SignIn() {
   return (
     <>
       <div className="p-8">
+        <Button variant="ghost" asChild className="absolute right-8 top-8">
+          <Link to="/sign-up">Cadastrar</Link>
+        </Button>
         <div className="flex w-[350px] flex-col justify-center gap-6">
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
@@ -34,9 +38,11 @@ export function SignIn() {
           <form onSubmit={handleSubmit(handleSignIn)} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Seu e-mail</Label>
-              <Input {...register("email")} id="email" />
+              <Input type="email" {...register("email")} id="email" />
             </div>
-            <Button disabled={isSubmitting} className="w-full">Acessar painel</Button>
+            <Button disabled={isSubmitting} className="w-full">
+              Acessar painel
+            </Button>
           </form>
         </div>
       </div>
