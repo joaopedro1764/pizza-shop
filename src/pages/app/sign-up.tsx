@@ -1,8 +1,10 @@
+import { registerRestaurant } from "@/api/register-restaurant";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -21,9 +23,26 @@ export function SignUp() {
     formState: { isSubmitting },
   } = useForm<SignInForm>();
 
+  const navigate = useNavigate();
+
+  const { mutateAsync: registerRestaurantFn } = useMutation({
+    mutationFn: registerRestaurant,
+  });
+
   async function handleSignUp(data: SignInForm) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    toast.success("Enviamos um link de autenticação para seu e-mail!");
+    console.log(data)
+    await registerRestaurantFn({
+      restaurantName: data.restaurantName,
+      managerName: data.managerName,
+      email: data.email,
+      phone: data.phone,
+    });
+    toast.success("Restaurante cadastrado com sucesso!", {
+      action: {
+        label: "Login",
+        onClick: () => navigate(`/sign-in?email=${data.email}`),
+      },
+    });
   }
   return (
     <>
