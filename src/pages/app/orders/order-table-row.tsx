@@ -93,7 +93,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
       <TableCell>
         <Dialog open={isOpenDetails} onOpenChange={setIsOpenDetails}>
           <DialogTrigger asChild>
-            <Button variant="outline" size="xs">
+            <Button variant="outline" size="sm">
               <Search className="h-3 w-3" />
               <span className="sr-only">Detalhes do pedido</span>
             </Button>
@@ -124,7 +124,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             onClick={() => aproveOrderFn({ orderId: order.orderId })}
             disabled={isApprovingOrder}
             variant="ghost"
-            size="xs"
+            size="sm"
           >
             <ArrowRight className="mr-2 h-3 w-3" /> Aprovar
           </Button>
@@ -134,7 +134,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             onClick={() => dispatchOrderFn({ orderId: order.orderId })}
             disabled={isDispatchingOrder}
             variant="ghost"
-            size="xs"
+            size="sm"
           >
             <ArrowRight className="mr-2 h-3 w-3" /> Em entrega
           </Button>
@@ -144,7 +144,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             onClick={() => deliveredOrderFn({ orderId: order.orderId })}
             disabled={isDeliveringOrder}
             variant="ghost"
-            size="xs"
+            size="sm"
           >
             <ArrowRight className="mr-2 h-3 w-3" /> Entregue
           </Button>
@@ -158,7 +158,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
             isCancelingOrder
           }
           variant="ghost"
-          size="xs"
+          size="sm"
         >
           <X className="mr-2 h-3 w-3" /> Cancelar
         </Button>

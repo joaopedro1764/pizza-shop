@@ -12,11 +12,8 @@ import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useSearchParams } from "react-router-dom";
-const newOrderSquema = z.object({
-  orderId: z.string().optional(),
-  customerName: z.string().optional(),
-  status: z.string().optional(),
-});
+
+
 
 type NewOrderSquema = z.infer<typeof newOrderSquema>;
 
@@ -110,14 +107,14 @@ export function OrderTableFilter() {
           </Select>
         )}
       />
-      <Button type="submit" variant="secondary" size="xs">
+      <Button type="submit" variant="secondary" size="sm">
         <Search className="mr-2 h-4 w-4" /> Filtrar resultados
       </Button>
       <Button
         onClick={handleClearFilter}
         type="button"
         variant="outline"
-        size="xs"
+        size="sm"
       >
         <X className="mr-2 h-4 w-4" /> Remover filtros
       </Button>
